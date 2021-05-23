@@ -66,7 +66,7 @@ function generatePassword() {
   //Prompt user for password length and validate answer
   var passwordLength = passwordLengthPrompt();
   
-  //Prompt user for passwords and validate answer
+  //Prompt user for chracter types and validate answer
   var passCriteria = charTypesPrompt();
 
   var pass = "";

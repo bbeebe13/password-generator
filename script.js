@@ -1,13 +1,17 @@
 // Assignment code here
-var lowerAlphabet = "abcdefghijklmnopqrstuvwxyz"
+var lowerRandom = function() {
+  lowerAlphabet = "abcdefghijklmnopqrstuvwxyz"
+  var lowerLetter = lowerAlphabet[Math.floor(Math.random()*lowerAlphabet.length)];
+  return lowerLetter;
+} 
 var upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var specChars = "!@#$%&*"
 
-var passwordLength = function() {
-  var passLength = window.prompt("Select password length. Enter a number between '8' and '128'.");
+var passwordLengthPrompt = function() {
+  var passLength = parseInt(window.prompt("Select password length. Enter a number between '8' and '128'."), 10);
   if (!passLength || passLength < 8 || passLength > 128) {
     alert("Invalid entry. Please try again.");
-    passwordLength();
+    passwordLengthPrompt();
   } else {
     return passLength;
   }
@@ -17,16 +21,20 @@ var passwordLength = function() {
 
 function generatePassword() {
   //Prompt user for password length
-  passwordLength();
+  var passwordLength = passwordLengthPrompt();
   
   //Prompt user for password criteria
   var lowerCase = window.confirm("Would you like to include lower case letters in your password?");
   var upperCase = window.confirm("Would you like to include upper case letters in your password?");
   var numerics = window.confirm("Would you like to include numbers in your password?");
   var specialChars = window.confirm("Would you like to include special characters in your password?");
-
-  for (var i = 0; i < passwordLength; i++) {
-
+  var pass = "";
+  if (lowerCase && upperCase === false && numerics === false && specialChars === false) {
+    for (var i = 0; i < passwordLength; i++) {
+      var pass = pass + lowerRandom();
+      console.log(pass);
+    }
+    return pass;
   }
 }
 

@@ -71,7 +71,7 @@ function generatePassword() {
 
   var pass = "";
 
-  //if only lower case letters are wanted in password
+  // 1.) if only lower case letters are wanted in password
   if (passCriteria[0] === true && passCriteria[1] === false && passCriteria[2] === false && passCriteria[3] === false) {
     for (var i = 0; i < passwordLength; i++) {
       pass = pass + lowerRandom();
@@ -80,7 +80,34 @@ function generatePassword() {
     return pass;
   }
 
-  //if upper and lower case letters are wanted in password
+  // 2.) if only upper case letters wanted
+  if (passCriteria[0] === false && passCriteria[1] === true && passCriteria[2] === false && passCriteria[3] === false) {
+    for (var i = 0; i < passwordLength; i++) {
+      pass = pass + upperRandom();
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 3.) if only numbers wanted
+  if (passCriteria[0] === false && passCriteria[1] === false && passCriteria[2] === true && passCriteria[3] === false) {
+    for (var i = 0; i < passwordLength; i++) {
+      pass = pass + numberRandom();
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 4.) if only special characters wanted
+  if (passCriteria[0] === false && passCriteria[1] === false && passCriteria[2] === false && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      pass = pass + specialRandom();
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 5.) if upper and lower case letters are wanted in password
   if (passCriteria[0] === true && passCriteria[1] === true && passCriteria[2] === false && passCriteria[3] === false) {
     for (var i = 0; i < passwordLength; i++) {
       if (Math.random() > 0.5) {
@@ -92,13 +119,37 @@ function generatePassword() {
     }
     return pass;
   }
-  //if upper, lower, and numbers are wanted in password
-  if (passCriteria[0] === true && passCriteria[1] === true && passCriteria[2] === true && passCriteria[3] === false) {
+
+  // 6.) if lower case and numbers wanted
+  if (passCriteria[0] === true && passCriteria[1] === false && passCriteria[2] === true && passCriteria[3] === false) {
     for (var i = 0; i < passwordLength; i++) {
-      var randomChar = Math.random();
-      if (randomChar >= 0.6) {
+      if (Math.random() > 0.5) {
         pass = pass + lowerRandom();
-      } else if (randomChar > 0.3 && randomChar < 0.6) {
+      } else {
+        pass = pass + numberRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 7.) if lower and special characters wanted
+  if (passCriteria[0] === true && passCriteria[1] === false && passCriteria[2] === false && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      if (Math.random() > 0.5) {
+        pass = pass + lowerRandom();
+      } else {
+        pass = pass + specialRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 8.) if upper and numbers wanted
+  if (passCriteria[0] === false && passCriteria[1] === true && passCriteria[2] === true && passCriteria[3] === false) {
+    for (var i = 0; i < passwordLength; i++) {
+      if (Math.random() > 0.5) {
         pass = pass + upperRandom();
       } else {
         pass = pass + numberRandom();
@@ -107,7 +158,99 @@ function generatePassword() {
     }
     return pass;
   }
-  //if all types of characters are wanted in password
+
+  // 9.) if upper and special wanted
+  if (passCriteria[0] === false && passCriteria[1] === true && passCriteria[2] === false && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      if (Math.random() > 0.5) {
+        pass = pass + upperRandom();
+      } else {
+        pass = pass + specialRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 10.) if numbers and special wanted
+  if (passCriteria[0] === false && passCriteria[1] === false && passCriteria[2] === true && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      if (Math.random() > 0.5) {
+        pass = pass + numberRandom();
+      } else {
+        pass = pass + specialRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 11.) if upper, lower, and numbers are wanted in password
+  if (passCriteria[0] === true && passCriteria[1] === true && passCriteria[2] === true && passCriteria[3] === false) {
+    for (var i = 0; i < passwordLength; i++) {
+      var randomChar = Math.random();
+      if (randomChar >= 0.6) {
+        pass = pass + lowerRandom();
+      } else if (randomChar >= 0.3 && randomChar < 0.6) {
+        pass = pass + upperRandom();
+      } else {
+        pass = pass + numberRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 12.) if lower, numbers, and special wanted
+  if (passCriteria[0] === true && passCriteria[1] === false && passCriteria[2] === true && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      var randomChar = Math.random();
+      if (randomChar >= 0.6) {
+        pass = pass + lowerRandom();
+      } else if (randomChar >= 0.3 && randomChar < 0.6) {
+        pass = pass + numberRandom();
+      } else {
+        pass = pass + specialRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 13.) if upper, numbers, and special wanted
+  if (passCriteria[0] === false && passCriteria[1] === true && passCriteria[2] === true && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      var randomChar = Math.random();
+      if (randomChar >= 0.6) {
+        pass = pass + upperRandom();
+      } else if (randomChar >= 0.3 && randomChar < 0.6) {
+        pass = pass + numberRandom();
+      } else {
+        pass = pass + specialRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+  // 14.) lower, upper, special wanted
+  if (passCriteria[0] === true && passCriteria[1] === true && passCriteria[2] === false && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      var randomChar = Math.random();
+      if (randomChar >= 0.6) {
+        pass = pass + upperRandom();
+      } else if (randomChar >= 0.3 && randomChar < 0.6) {
+        pass = pass + lowerRandom();
+      } else {
+        pass = pass + specialRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
+
+
+  // 15.) if all types of characters are wanted in password
   if (passCriteria[0] === true && passCriteria[1] === true && passCriteria[2] === true && passCriteria[3] === true) {
     for (var i = 0; i < passwordLength; i++) {
       var randomChar = Math.random();

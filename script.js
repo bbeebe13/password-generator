@@ -1,23 +1,27 @@
-// Assignment code here
+// random lower case function
 var lowerRandom = function() {
   lowerAlphabet = "abcdefghijklmnopqrstuvwxyz"
   var lowerLetter = lowerAlphabet[Math.floor(Math.random()*lowerAlphabet.length)];
   return lowerLetter;
 } 
+
+//random upper case function
 var upperRandom = function() {
   var upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   var upperLetter = upperAlphabet[Math.floor(Math.random()*upperAlphabet.length)];
   return upperLetter;
 }
 
+//random special character function
 var specialRandom = function() {
-  var specChars = "!@#$%&*"
+  var specChars = "!@#$%&"
   var specChars = specChars[Math.floor(Math.random()*specChars.length)];
   return specChars;
 }
 
-var numberRandom = function(min,max) {
-  return Math.floor(Math.random()*(max-min))+min;
+//random number between 0 and 9 function
+var numberRandom = function() {
+  return Math.floor(Math.random()*10);
 }
 
 
@@ -89,9 +93,37 @@ function generatePassword() {
     return pass;
   }
   //if upper, lower, and numbers are wanted in password
-
+  if (passCriteria[0] === true && passCriteria[1] === true && passCriteria[2] === true && passCriteria[3] === false) {
+    for (var i = 0; i < passwordLength; i++) {
+      var randomChar = Math.random();
+      if (randomChar >= 0.6) {
+        pass = pass + lowerRandom();
+      } else if (randomChar > 0.3 && randomChar < 0.6) {
+        pass = pass + upperRandom();
+      } else {
+        pass = pass + numberRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
   //if all types of characters are wanted in password
-
+  if (passCriteria[0] === true && passCriteria[1] === true && passCriteria[2] === true && passCriteria[3] === true) {
+    for (var i = 0; i < passwordLength; i++) {
+      var randomChar = Math.random();
+      if (randomChar >= 0.75) {
+        pass = pass + lowerRandom();
+      } else if (randomChar >= 0.5 && randomChar < 0.75) {
+        pass = pass + upperRandom();
+      } else if(randomChar >= 0.25 && randomChar <0.5) {
+        pass = pass + numberRandom();
+      } else {
+        pass = pass + specialRandom();
+      }
+      console.log(pass);
+    }
+    return pass;
+  }
 
 }
 
